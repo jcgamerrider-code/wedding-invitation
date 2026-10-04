@@ -13,8 +13,9 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:Cinzel,serif;background:var(--bg);color:var(--cream);overflow:hidden}
-body.unlocked{overflow-x:hidden;overflow-y:auto}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Cinzel,serif;background:var(--bg);color:var(--cream)}
+html.unlocked,body.unlocked{overflow-x:hidden;overflow-y:auto}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;background:radial-gradient(circle at 50% 15%,transparent 0 22%,rgba(0,0,0,.28) 100%)}
 #stars,#petals{position:fixed;inset:0;pointer-events:none;z-index:10;overflow:hidden}
 .star{position:absolute;width:3px;height:3px;background:#fff4bd;border-radius:50%;box-shadow:0 0 12px #ffe28a;animation:twinkle 2.5s infinite ease-in-out}
@@ -208,6 +209,7 @@ const enterCelebration = document.getElementById('enterCelebration');
 
 enterCelebration.addEventListener('click', (event) => {
   event.preventDefault();
+  document.documentElement.classList.add('unlocked');
   document.body.classList.add('unlocked');
   bgMusic.volume = 0.45;
   bgMusic.play().catch(() => {});
